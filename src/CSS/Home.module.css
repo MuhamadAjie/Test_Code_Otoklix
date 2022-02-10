@@ -1,0 +1,20 @@
+.spanList {
+  width: 35px;
+  height: 4px;
+  margin: 30px 15px;
+  background: #F47522;
+  border-radius: 2px;
+}
+
+.colorBody {
+  background-color: #FDEFF4;
+}
+
+.textStyle {
+  max-width: 100%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
