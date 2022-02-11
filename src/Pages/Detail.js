@@ -14,6 +14,7 @@ function Detail() {
 
   useEffect(() => {
     getDataById();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getDataById = () => {
