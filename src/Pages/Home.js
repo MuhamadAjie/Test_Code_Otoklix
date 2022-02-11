@@ -11,11 +11,12 @@ import Swal from "sweetalert2";
 function Home() {
   let navigate = useNavigate();
   const [data, setData] = useState([]);
-  // const [showEdit, setShowEdit] = useState(false);
-  // const [title, setTitle] = useState("");
-  // const [content, setContent] = useState("");
 
   useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = () => {
     axios
       .get(Api.allPosts)
       .then(function (response) {
@@ -26,7 +27,7 @@ function Home() {
       .catch(function (error) {
         console.log(error);
       });
-  }, []);
+  };
 
   const handleDetail = (id) => {
     navigate(`/detail/${id}`);
@@ -48,7 +49,7 @@ function Home() {
           .delete(`https://limitless-forest-49003.herokuapp.com/posts/${id}`)
           .then(function (response) {
             const result = response.data;
-            setData(result);
+            getData();
             console.log(result);
           })
           .catch(function (error) {
@@ -58,96 +59,12 @@ function Home() {
     });
   };
 
-  // const handleEdit = (item) => {
-  //   setShowEdit(true);
-  //   setTitle(item.title);
-  //   setContent(item.content);
-  // };
-
-  // const handleUpdate = (id) => {
-  //   axios
-  //     .put(`https://limitless-forest-49003.herokuapp.com/posts/${id}`, {
-  //       title: title,
-  //       content: content,
-  //     })
-  //     .then(function (response) {
-  //       const result = response.data;
-  //       setData(result);
-  //       console.log(result);
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  // };
-
-  // const handleClose = () => {
-  //   setShowEdit(false);
-  //   clearState();
-  // };
-
-  // const clearState = () => {
-  //   setTitle("");
-  //   setContent("");
-  // };
-
   return (
     <div className={styles.colorBody}>
       <Header />
 
       <Image src="../Assets/work-desk.jpg" style={{ width: "100%" }} />
       <Container>
-        {/* Modal Edit
-        <Modal
-          size="lg"
-          show={showEdit}
-          onHide={() => setShowEdit(false)}
-          aria-labelledby="example-modal-sizes-title-lg"
-        >
-          <Modal.Header closeButton>
-            <Modal.Title id="example-modal-sizes-title-lg">
-              Edit Title or Content
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <form>
-              <div className="form-group mb-3">
-                <label htmlFor="title">Title</label>
-                <input
-                  onChange={(e) => setTitle(e.target.value)}
-                  value={data.title}
-                  type="text"
-                  className="form-control"
-                  id="title"
-                  required
-                  placeholder="title"
-                />
-              </div>
-              <div className="form-group mb-3">
-                <label htmlFor="content">Content</label>
-                <input
-                  onChange={(e) => setContent(e.target.value)}
-                  value={data.content}
-                  type="text"
-                  className="form-control"
-                  id="content"
-                  as="textarea"
-                  rows={10}
-                  required
-                  placeholder="content"
-                />
-              </div>
-              <Button onClick={() => handleUpdate(data.id)}>SIMPAN</Button>
-              <Button
-                className="ms-3"
-                variant="secondary"
-                onClick={handleClose}
-              >
-                CANCEL
-              </Button>
-            </form>
-          </Modal.Body>
-        </Modal> */}
-
         <div className="text-center mt-5">
           <p className="fs-1 fw-bold mt-5 mb-5 d-flex justify-content-center">
             <span className={styles.spanList}></span>Blog
