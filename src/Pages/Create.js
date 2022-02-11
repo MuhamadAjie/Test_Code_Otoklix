@@ -24,8 +24,7 @@ function Create() {
   return (
     <div>
       <Header />
-      <h1>INI CREATE</h1>
-      <Container>
+      <Container className="mt-5">
         <Row>
           <Col lg="2"></Col>
           <Col>
