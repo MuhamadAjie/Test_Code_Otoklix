@@ -2,7 +2,7 @@ import Header from "../Components/Header";
 import { useParams, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Container, Button, Modal } from "react-bootstrap";
+import { Container, Button, Modal, Form } from "react-bootstrap";
 
 function Detail() {
   let { id } = useParams();
@@ -85,33 +85,32 @@ function Detail() {
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <form>
-              <div className="form-group mb-3">
-                <label htmlFor="title">Title</label>
-                <input
+            <Form>
+              <Form.Group className="mb-3">
+                <Form.Label>Title</Form.Label>
+                <Form.Control
                   onChange={(e) => setTitle(e.target.value)}
                   value={title}
+                  name="title"
                   type="text"
-                  className="form-control"
-                  id="title"
                   required
-                  placeholder="title"
+                  placeholder="Enter title"
                 />
-              </div>
-              <div className="form-group mb-3">
-                <label htmlFor="content">Content</label>
-                <input
+              </Form.Group>
+
+              <Form.Group className="mb-3">
+                <Form.Label>Content</Form.Label>
+                <Form.Control
                   onChange={(e) => setContent(e.target.value)}
                   value={content}
-                  type="text"
-                  className="form-control"
-                  id="content"
+                  name="content"
                   as="textarea"
-                  rows={10}
+                  rows={12}
+                  type="text"
                   required
-                  placeholder="content"
+                  placeholder="Your text ..."
                 />
-              </div>
+              </Form.Group>
               <Button onClick={(e) => handleUpdate(e)}>SIMPAN</Button>
               <Button
                 className="ms-3"
@@ -120,7 +119,7 @@ function Detail() {
               >
                 CANCEL
               </Button>
-            </form>
+            </Form>
           </Modal.Body>
         </Modal>
 
