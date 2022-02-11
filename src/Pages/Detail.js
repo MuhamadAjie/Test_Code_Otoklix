@@ -2,7 +2,7 @@ import Header from "../Components/Header";
 import { useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Container } from "react-bootstrap";
+import { Container, Button } from "react-bootstrap";
 
 function Detail() {
   let { id } = useParams();
@@ -24,10 +24,13 @@ function Detail() {
   return (
     <div>
       <Header />
-      <h1>INI DETAIL</h1>
-      <Container className="mb-5">
-        <p>{dataById.title}</p>
+      <Container className="mt-5">
+        <h1 className="text-center mb-3">{dataById.title}</h1>
         <p>{dataById.content}</p>
+        <div className="mt-3">
+          <Button className="me-3">Kembali</Button>
+          <Button variant="success">Edit</Button>
+        </div>
       </Container>
     </div>
   );
